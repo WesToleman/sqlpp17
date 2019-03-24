@@ -102,7 +102,8 @@ namespace sqlpp
   template <typename Table>
   [[nodiscard]] constexpr auto drop_table(Table table)
   {
-    if constexpr (constexpr auto _check = check_drop_table_arg<Table>(); _check)
+    constexpr auto _check = check_drop_table_arg<Table>();
+    if constexpr (_check)
     {
       return statement<drop_table_t<Table>>{table};
     }

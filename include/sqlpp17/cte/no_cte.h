@@ -94,7 +94,8 @@ namespace sqlpp
   template <typename NamedTypeOrTag>
   [[nodiscard]] constexpr auto cte([[maybe_unused]] NamedTypeOrTag)
   {
-    if constexpr (constexpr auto _check = check_cte_args<NamedTypeOrTag>(); _check)
+    constexpr auto _check = check_cte_args<NamedTypeOrTag>();
+    if constexpr (_check)
     {
       return cte_alias_t<name_tag_of_t<NamedTypeOrTag>>{};
     }

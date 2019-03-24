@@ -63,7 +63,8 @@ namespace sqlpp
   template <typename Arg0, typename Arg1, typename... Args, typename = check_for_expression<Arg0, Arg1, Args...>>
   constexpr auto coalesce(Arg0 arg0, Arg1 arg1, Args... args)
   {
-    if constexpr (constexpr auto _check = check_coalesce_args<Arg0, Arg1, Args...>(); _check)
+    constexpr auto _check = check_coalesce_args<Arg0, Arg1, Args...>();
+    if constexpr (_check)
     {
       return coalesce_t<Arg0, Arg1, Args...>{std::tuple{arg0, arg1, args...}};
     }

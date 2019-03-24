@@ -100,7 +100,8 @@ namespace sqlpp
   template <typename Table>
   [[nodiscard]] constexpr auto truncate(Table table)
   {
-    if constexpr (constexpr auto _check = check_truncate_arg<Table>(); _check)
+    constexpr auto _check = check_truncate_arg<Table>();
+    if constexpr (_check)
     {
       return statement<truncate_t<Table>>{table};
     }

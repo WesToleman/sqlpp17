@@ -63,7 +63,8 @@ namespace sqlpp
   template <typename Expr, typename NamedTypeOrTag>
   [[nodiscard]] constexpr auto as(Expr expr, const NamedTypeOrTag& tag)
   {
-    if constexpr (constexpr auto _check = check_as_args<Expr, NamedTypeOrTag>(); _check)
+    constexpr auto _check = check_as_args<Expr, NamedTypeOrTag>();
+    if constexpr (_check)
     {
       return alias_t<Expr, name_tag_of_t<NamedTypeOrTag>>{expr};
     }

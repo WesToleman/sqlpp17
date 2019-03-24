@@ -112,7 +112,8 @@ namespace sqlpp
   template <typename Table>
   [[nodiscard]] constexpr auto delete_from(Table table)
   {
-    if constexpr (constexpr auto _check = check_delete_from_arg<Table>(); _check)
+    constexpr auto _check = check_delete_from_arg<Table>();
+    if constexpr (_check)
     {
       return statement<delete_from_t<Table>>{table} << statement<no_where_t>{};
     }

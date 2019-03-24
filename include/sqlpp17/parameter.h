@@ -77,7 +77,8 @@ namespace sqlpp
     template <typename NamedTypeOrTag>
     [[nodiscard]] constexpr auto operator()([[maybe_unused]] NamedTypeOrTag) const
     {
-      if constexpr (constexpr auto _check = check_parameter_args<NamedTypeOrTag>(); _check)
+      constexpr auto _check = check_parameter_args<NamedTypeOrTag>();
+      if constexpr (_check)
       {
         return parameter_t<ValueType, name_tag_of_t<NamedTypeOrTag>>{};
       }

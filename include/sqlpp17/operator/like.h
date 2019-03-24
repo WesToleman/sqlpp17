@@ -38,7 +38,8 @@ namespace sqlpp
   template <typename L, typename R>
   constexpr auto like(L l, R r)
   {
-    if constexpr (constexpr auto _check = check_comparison_args<L, R>(); _check)
+    constexpr auto _check = check_comparison_args<L, R>();
+    if constexpr (_check)
     {
       return comparison_t<L, like_t, R>{l, r};
     }

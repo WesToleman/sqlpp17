@@ -146,7 +146,8 @@ namespace sqlpp
     template <typename... CommonTableExpressions>
     [[nodiscard]] constexpr auto with(CommonTableExpressions... ctes) const
     {
-      if constexpr (constexpr auto _check = check_with_args<with_mode::flat>(ctes...); _check)
+      constexpr auto _check = check_with_args<with_mode::flat>(ctes...);
+      if constexpr (_check)
       {
         return new_statement(*this, with_t<with_mode::flat, CommonTableExpressions...>{ctes...});
       }
@@ -159,7 +160,8 @@ namespace sqlpp
     template <typename... CommonTableExpressions>
     [[nodiscard]] constexpr auto with_recursive(CommonTableExpressions... ctes) const
     {
-      if constexpr (constexpr auto _check = check_with_args<with_mode::recursive>(ctes...); _check)
+      constexpr auto _check = check_with_args<with_mode::recursive>(ctes...);
+      if constexpr (_check)
       {
         return new_statement(*this, with_t<with_mode::recursive, CommonTableExpressions...>{ctes...});
       }

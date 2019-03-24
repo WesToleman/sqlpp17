@@ -106,7 +106,8 @@ namespace sqlpp
     template <typename When, typename Then>
     [[nodiscard]] constexpr auto when(When when, then_t<Then> then) const
     {
-      if constexpr (constexpr auto _check = check_when_then_args<value_type_of_t<case_when_then_t>, When, Then>(); _check)
+      constexpr auto _check = check_when_then_args<value_type_of_t<case_when_then_t>, When, Then>();
+      if constexpr (_check)
       {
         auto _wt = when_then_t<When, Then>{when, then._expr};
         return case_when_then_t<WhenThens..., decltype(_wt)>{std::tuple_cat(_when_thens, std::tuple{_wt})};
@@ -120,7 +121,8 @@ namespace sqlpp
     template <typename Else>
     [[nodiscard]] constexpr auto else_(Else els) const
     {
-      if constexpr (constexpr auto _check = check_else_arg<value_type_of_t<case_when_then_t>, Else>(); _check)
+      constexpr auto _check = check_else_arg<value_type_of_t<case_when_then_t>, Else>();
+      if constexpr (_check)
       {
         return case_when_then_else_t<case_when_then_t, Else>{*this, els};
       }
@@ -184,7 +186,8 @@ namespace sqlpp
   template <typename Then>
   [[nodiscard]] constexpr auto then(Then expr)
   {
-    if constexpr (constexpr auto _check = check_then_args<Then>(); _check)
+    constexpr auto _check = check_then_args<Then>();
+    if constexpr (_check)
     {
       return then_t<Then>{expr};
     }
@@ -208,7 +211,8 @@ namespace sqlpp
   template <typename When, typename Then>
   [[nodiscard]] constexpr auto case_when(When when, then_t<Then> then)
   {
-    if constexpr (constexpr auto _check = check_then_args<When>(); _check)
+    constexpr auto _check = check_then_args<When>();
+    if constexpr (_check)
     {
       auto wt = when_then_t<When, Then>{when, then._expr};
       return case_when_then_t<decltype(wt)>{std::tuple{wt}};

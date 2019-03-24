@@ -103,7 +103,8 @@ namespace sqlpp
   template <typename Table>
   [[nodiscard]] constexpr auto create_table(Table table)
   {
-    if constexpr (constexpr auto _check = check_create_table_arg<Table>(); _check)
+    constexpr auto _check = check_create_table_arg<Table>();
+    if constexpr (_check)
     {
       return statement<create_table_t<Table>>{table};
     }

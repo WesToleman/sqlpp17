@@ -184,7 +184,8 @@ namespace sqlpp::mysql
     auto operator()(const ::sqlpp::statement<Clauses...>& statement)
     {
       using Statement = ::sqlpp::statement<Clauses...>;
-      if constexpr (constexpr auto _check = check_statement_executable<base_connection>(type_v<Statement>); _check)
+      constexpr auto _check = check_statement_executable<base_connection>(type_v<Statement>);
+      if constexpr (_check)
       {
         using ResultType = result_type_of_t<Statement>;
         if constexpr (std::is_same_v<ResultType, insert_result>)
@@ -222,7 +223,8 @@ namespace sqlpp::mysql
     auto prepare(const ::sqlpp::statement<Clauses...>& statement)
     {
       using Statement = ::sqlpp::statement<Clauses...>;
-      if constexpr (constexpr auto _check = check_statement_preparable<base_connection>(type_v<Statement>); _check)
+      constexpr auto _check = check_statement_preparable<base_connection>(type_v<Statement>);
+      if constexpr (_check)
       {
         return ::sqlpp::mysql::prepared_statement_t{*this, statement};
       }

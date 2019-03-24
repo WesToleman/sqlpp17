@@ -178,7 +178,8 @@ namespace sqlpp
     template <typename... Columns>
     [[nodiscard]] constexpr auto columns(Columns... columns) const
     {
-      if constexpr (constexpr auto _check = check_select_columns_arg<remove_optional_t<Columns>...>(); _check)
+      constexpr auto _check = check_select_columns_arg<remove_optional_t<Columns>...>();
+      if constexpr (_check)
       {
         return new_statement(*this, select_columns_t<Columns...>{std::tuple(columns...)});
       }
@@ -191,7 +192,8 @@ namespace sqlpp
     template <typename... Columns>
     [[nodiscard]] constexpr auto columns(std::tuple<Columns...> columns) const
     {
-      if constexpr (constexpr auto _check = check_select_columns_arg<remove_optional_t<Columns>...>(); _check)
+      constexpr auto _check = check_select_columns_arg<remove_optional_t<Columns>...>();
+      if constexpr (_check)
       {
         return new_statement(*this, select_columns_t<Columns...>{columns});
       }

@@ -69,7 +69,8 @@ namespace sqlpp
   template <typename Expression>
   [[nodiscard]] constexpr auto avg(Expression expression)
   {
-    if constexpr (constexpr auto _check = check_avg_args<Expression>(); _check)
+    constexpr auto _check = check_avg_args<Expression>();
+    if constexpr (_check)
     {
       return aggregate_t<avg_t<no_flag_t>, Expression>{expression};
     }
@@ -82,7 +83,8 @@ namespace sqlpp
   template <typename Expression>
   [[nodiscard]] constexpr auto avg([[maybe_unused]] distinct_t, Expression expression)
   {
-    if constexpr (constexpr auto _check = check_avg_args<Expression>(); _check)
+    constexpr auto _check = check_avg_args<Expression>();
+    if constexpr (_check)
     {
       return aggregate_t<avg_t<distinct_t>, Expression>{expression};
     }

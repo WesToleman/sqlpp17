@@ -99,7 +99,8 @@ namespace sqlpp
   template <typename Table>
   [[nodiscard]] constexpr auto update(Table table)
   {
-    if constexpr (constexpr auto _check = check_update_arg<Table>(); _check)
+    constexpr auto _check = check_update_arg<Table>();
+    if constexpr (_check)
     {
       return statement<update_t<Table>>{table} << statement<no_update_set_t, no_where_t>{};
     }
