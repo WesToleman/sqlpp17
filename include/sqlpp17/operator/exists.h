@@ -46,7 +46,7 @@ namespace sqlpp
 
   template <typename SubQuery>
   constexpr auto exists(SubQuery sub_query)
-      -> std::enable_if_t<is_statement_v<SubQuery> and has_result_row_v<SubQuery>, exists_t<SubQuery>>
+      -> std::enable_if_t<is_statement_v<SubQuery> && has_result_row_v<SubQuery>, exists_t<SubQuery>>
   {
     return exists_t<SubQuery>{sub_query};
   }

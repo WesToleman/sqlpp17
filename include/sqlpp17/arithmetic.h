@@ -58,7 +58,7 @@ namespace sqlpp
   };
 
   template <typename L, typename R>
-  using check_arithmetic_args = std::enable_if_t<has_numeric_value_v<L> and has_numeric_value_v<R>>;
+  using check_arithmetic_args = std::enable_if_t<has_numeric_value_v<L> && has_numeric_value_v<R>>;
 
   template <typename L, typename Operator, typename R>
   struct value_type_of<arithmetic_t<L, Operator, R>>

@@ -104,10 +104,10 @@ namespace sqlpp
   {
     constexpr auto known_aggregates = (::sqlpp::type_vector{} + ... + provided_aggregates_of_v<Clauses>);
 
-    constexpr auto all_aggregates = (true and ... and recursive_is_aggregate(known_aggregates, ::sqlpp::type_vector<Columns>{}));
-    constexpr auto no_aggregates = not(false or ... or recursive_contains_aggregate(known_aggregates, ::sqlpp::type_vector<Columns>{}));
+    constexpr auto all_aggregates = (true && ... && recursive_is_aggregate(known_aggregates, ::sqlpp::type_vector<Columns>{}));
+    constexpr auto no_aggregates = !(false || ... || recursive_contains_aggregate(known_aggregates, ::sqlpp::type_vector<Columns>{}));
 
-    if constexpr (not(all_aggregates or no_aggregates))
+    if constexpr (!(all_aggregates || no_aggregates))
     {
       return failed<assert_selected_columns_all_aggregates_or_none>{};
     }

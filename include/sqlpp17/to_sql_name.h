@@ -35,7 +35,7 @@ namespace sqlpp
   template <typename Context, typename Object>
   [[nodiscard]] auto to_sql_name(Context& context, const Object& object) -> std::string
   {
-    if constexpr (not std::is_same_v<name_tag_of_t<Object>, none_t>)
+    if constexpr (!std::is_same_v<name_tag_of_t<Object>, none_t>)
     {
       return std::string(name_tag_of_t<Object>::name);
     }

@@ -48,7 +48,7 @@ namespace sqlpp
       {
         return table_alias_t<table_t, table_spec<NamedTypeOrTag, type_hash<table_t>()>, TableSpec>{{}};
       }
-      else if constexpr (not std::is_same_v<name_tag_of_t<NamedTypeOrTag>, none_t>)
+      else if constexpr (!std::is_same_v<name_tag_of_t<NamedTypeOrTag>, none_t>)
       {
         return table_alias_t<table_t, table_spec<name_tag_of_t<NamedTypeOrTag>, type_hash<table_t>()>, TableSpec>{{}};
       }

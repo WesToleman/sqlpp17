@@ -79,7 +79,7 @@ namespace sqlpp::postgresql::detail
     // If one day we switch to binary format, then we could use PQexecParams with resultFormat=1
     auto result = detail::unique_result_ptr(PQexec(connection.get(), sql_string.c_str()), {});
 
-    if (not result)
+    if (!result)
     {
       throw sqlpp::exception("Postgresql: out of memory (query was >>" + sql_string + "<<\n");
     }
@@ -205,7 +205,7 @@ namespace sqlpp::postgresql
     base_connection& operator=(base_connection&&) = default;
     ~base_connection()
     {
-      if constexpr (not std::is_same_v<Pool, ::sqlpp::no_pool>)
+      if constexpr (!std::is_same_v<Pool, ::sqlpp::no_pool>)
       {
         if (this->_connection_pool)
           this->_connection_pool->put(std::move(_handle));
@@ -280,7 +280,7 @@ namespace sqlpp::postgresql
 
     auto commit() -> void
     {
-      if (not _transaction_active)
+      if (!_transaction_active)
       {
         throw sqlpp::exception("Postgresql: Cannot commit without active transaction");
       }
@@ -291,7 +291,7 @@ namespace sqlpp::postgresql
 
     auto rollback() -> void
     {
-      if (not _transaction_active)
+      if (!_transaction_active)
       {
         throw sqlpp::exception("Postgresql: Cannot rollback without active transaction");
       }

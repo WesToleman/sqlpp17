@@ -77,7 +77,7 @@ namespace sqlpp
   {
     constexpr auto known_aggregates = (::sqlpp::type_vector{} + ... + provided_aggregates_of_v<Clauses>);
 
-    if constexpr ((known_aggregates.empty() and ... and recursive_contains_aggregate(known_aggregates, ::sqlpp::type_vector<Columns>{})))
+    if constexpr ((known_aggregates.empty() && ... && recursive_contains_aggregate(known_aggregates, ::sqlpp::type_vector<Columns>{})))
     {
       return failed<assert_order_by_args_not_having_aggregates_without_group_by>{};
     }

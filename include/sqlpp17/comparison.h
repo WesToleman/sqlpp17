@@ -52,7 +52,7 @@ namespace sqlpp
   template <typename L, typename R>
   constexpr auto check_comparison_args()
   {
-    if constexpr (not values_are_compatible_v<L, R>)
+    if constexpr (!values_are_compatible_v<L, R>)
     {
       return failed<assert_comparison_operands_are_compatible>{};
     }

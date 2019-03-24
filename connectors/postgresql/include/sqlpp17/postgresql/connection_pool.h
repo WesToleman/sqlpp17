@@ -119,7 +119,7 @@ namespace sqlpp::postgresql
       _handles.pop_front();
 
       // destroy dead connections
-      if (handle and PQstatus(handle.get()) != CONNECTION_OK)
+      if (handle && PQstatus(handle.get()) != CONNECTION_OK)
       {
         handle.reset();
       }

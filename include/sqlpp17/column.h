@@ -122,12 +122,12 @@ namespace sqlpp
   template <typename TableSpec, typename ColumnSpec>
   struct has_default<column_t<TableSpec, ColumnSpec>>
   {
-    static constexpr auto value = ColumnSpec::has_default_value or ColumnSpec::can_be_null or ColumnSpec::has_auto_increment;
+    static constexpr auto value = ColumnSpec::has_default_value || ColumnSpec::can_be_null || ColumnSpec::has_auto_increment;
   };
 
   template <typename TableSpec, typename ColumnSpec>
   struct is_insert_required<column_t<TableSpec, ColumnSpec>>
-      : std::integral_constant<bool, not has_default_v<column_t<TableSpec, ColumnSpec>>>
+      : std::integral_constant<bool, !has_default_v<column_t<TableSpec, ColumnSpec>>>
   {
   };
 

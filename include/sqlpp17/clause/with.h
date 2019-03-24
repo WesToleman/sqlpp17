@@ -114,11 +114,11 @@ namespace sqlpp
   template <with_mode Mode, typename... CommonTableExpressions>
   constexpr auto check_with_args(const CommonTableExpressions&...)
   {
-    if constexpr (not(true and ... and is_cte_v<CommonTableExpressions>))
+    if constexpr (!(true && ... && is_cte_v<CommonTableExpressions>))
     {
       return failed<assert_with_args_are_ctes>{};
     }
-    else if constexpr (Mode == with_mode::flat and (false or ... or is_cte_recursive_v<CommonTableExpressions>))
+    else if constexpr (Mode == with_mode::flat && (false || ... || is_cte_recursive_v<CommonTableExpressions>))
     {
       return failed<assert_with_args_not_recursive>{};
     }

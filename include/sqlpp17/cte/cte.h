@@ -73,7 +73,7 @@ namespace sqlpp
     {
       return failed<assert_cte_union_is_not_recursive_twice>{};
     }
-    else if constexpr (not result_rows_are_compatible_v<result_row_of_t<Cte>, result_row_of_t<Statement>>)
+    else if constexpr (!result_rows_are_compatible_v<result_row_of_t<Cte>, result_row_of_t<Statement>>)
     {
       return failed<assert_cte_union_arg_is_compatible>{};
     }

@@ -42,7 +42,7 @@ namespace sqlpp
   template <typename Expression>
   constexpr auto check_sum_args()
   {
-    if constexpr (not has_numeric_value_v<Expression>)
+    if constexpr (!has_numeric_value_v<Expression>)
     {
       return failed<assert_sum_arg_is_numeric>{};
     }

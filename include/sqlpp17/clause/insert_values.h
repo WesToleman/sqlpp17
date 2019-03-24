@@ -313,9 +313,9 @@ namespace sqlpp
     {
       return failed<assert_insert_set_args_affect_single_table>{};
     }
-    else if constexpr (not(true and ... and
-                           (is_optional_v<Assignments> ? has_default_v<column_of_t<remove_optional_t<Assignments>>>
-                                                       : true)))
+    else if constexpr (!(true && ... &&
+                        (is_optional_v<Assignments> ? has_default_v<column_of_t<remove_optional_t<Assignments>>>
+                                                    : true)))
     {
       return failed<assert_insert_set_optional_args_have_default>{};
     }

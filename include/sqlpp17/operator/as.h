@@ -44,7 +44,7 @@ namespace sqlpp
   template <typename Expr, typename Tag>
   constexpr auto check_as_args()
   {
-    if constexpr (not is_expression_v<Expr>)
+    if constexpr (!is_expression_v<Expr>)
     {
       return failed<assert_first_as_arg_is_expression>{};
     }

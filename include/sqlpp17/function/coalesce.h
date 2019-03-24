@@ -52,7 +52,7 @@ namespace sqlpp
   template <typename Arg0, typename Arg1, typename... Args>
   constexpr auto check_coalesce_args()
   {
-    if constexpr (not(values_are_compatible_v<Arg0, Arg1> and ... and values_are_compatible_v<Arg0, Args>))
+    if constexpr (!(values_are_compatible_v<Arg0, Arg1> && ... && values_are_compatible_v<Arg0, Args>))
     {
       return failed<assert_coalesce_args_are_compatible>{};
     }

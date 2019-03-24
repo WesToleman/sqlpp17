@@ -125,7 +125,7 @@ namespace sqlpp::mysql
     base_connection() = delete;
     base_connection(const connection_config_t& config) : _debug_base{config.debug}, _handle(mysql_init(nullptr))
     {
-      if (not _handle)
+      if (!_handle)
       {
         throw sqlpp::exception("MySQL: could not init mysql data structure");
       }
@@ -173,7 +173,7 @@ namespace sqlpp::mysql
     base_connection& operator=(base_connection&&) = default;
     ~base_connection()
     {
-      if constexpr (not std::is_same_v<Pool, no_pool>)
+      if constexpr (!std::is_same_v<Pool, no_pool>)
       {
         if (this->_connection_pool)
           this->_connection_pool->put(std::move(_handle));
@@ -245,7 +245,7 @@ namespace sqlpp::mysql
 
     auto commit() -> void
     {
-      if (not _transaction_active)
+      if (!_transaction_active)
       {
         throw sqlpp::exception("MySQL: Cannot commit without active transaction");
       }
@@ -256,7 +256,7 @@ namespace sqlpp::mysql
 
     auto rollback() -> void
     {
-      if (not _transaction_active)
+      if (!_transaction_active)
       {
         throw sqlpp::exception("MySQL: Cannot rollback without active transaction");
       }

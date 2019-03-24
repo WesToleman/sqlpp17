@@ -42,7 +42,7 @@ namespace sqlpp
   template <typename Expression>
   constexpr auto check_max_args()
   {
-    if constexpr (not is_expression_v<Expression>)
+    if constexpr (!is_expression_v<Expression>)
     {
       return failed<assert_max_arg_is_expression>{};
     }

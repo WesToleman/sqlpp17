@@ -69,7 +69,7 @@ namespace sqlpp
   template <typename Db, typename Number, typename... Clauses>
   constexpr auto check_clause_preparable(const type_t<clause_base<limit_t<Number>, statement<Clauses...>>>& t)
   {
-    if constexpr ((true and ... and (clause_tag<Clauses> != ::std::string_view{"order_by"})))
+    if constexpr ((true && ... && (clause_tag<Clauses> != ::std::string_view{"order_by"})))
     {
       return failed<assert_limit_used_with_order_by>{};
     }

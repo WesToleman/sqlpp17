@@ -141,7 +141,7 @@ namespace sqlpp::sqlite3
     base_connection& operator=(base_connection&&) = default;
     ~base_connection()
     {
-      if constexpr (not std::is_same_v<Pool, ::sqlpp::no_pool>)
+      if constexpr (!std::is_same_v<Pool, ::sqlpp::no_pool>)
       {
         if (this->_connection_pool)
           this->_connection_pool->put(std::move(_handle));
@@ -221,7 +221,7 @@ namespace sqlpp::sqlite3
 
     auto commit() -> void
     {
-      if (not _transaction_active)
+      if (!_transaction_active)
       {
         throw sqlpp::exception("Sqlite3: Cannot commit without active transaction");
       }
@@ -233,7 +233,7 @@ namespace sqlpp::sqlite3
 
     auto rollback() -> void
     {
-      if (not _transaction_active)
+      if (!_transaction_active)
       {
         throw sqlpp::exception("Sqlite3: Cannot rollback without active transaction");
       }

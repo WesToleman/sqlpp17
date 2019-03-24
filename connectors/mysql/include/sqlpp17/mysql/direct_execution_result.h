@@ -104,7 +104,7 @@ namespace sqlpp ::mysql
   template <typename T>
   auto read_field(char* data, unsigned long length, std::optional<T>& value) -> void
   {
-    if (not data)
+    if (!data)
     {
       value.reset();
     }

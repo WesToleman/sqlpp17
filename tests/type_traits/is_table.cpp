@@ -32,16 +32,16 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 SQLPP_CREATE_NAME_TAG(foo);
 
 // non-tables
-static_assert(not sqlpp::is_table(7));
-static_assert(not sqlpp::is_table(test::tabPerson.id));
-static_assert(not sqlpp::is_table(test::tabPerson.id.as(test::tabPerson)));
+static_assert(!sqlpp::is_table(7));
+static_assert(!sqlpp::is_table(test::tabPerson.id));
+static_assert(!sqlpp::is_table(test::tabPerson.id.as(test::tabPerson)));
 
 // unconditional joins
-static_assert(not sqlpp::is_table(test::tabEmpty.join(test::tabPerson)));
-static_assert(not sqlpp::is_table(test::tabEmpty.inner_join(test::tabPerson)));
-static_assert(not sqlpp::is_table(test::tabEmpty.left_outer_join(test::tabPerson)));
-static_assert(not sqlpp::is_table(test::tabEmpty.right_outer_join(test::tabPerson)));
-static_assert(not sqlpp::is_table(test::tabEmpty.outer_join(test::tabPerson)));
+static_assert(!sqlpp::is_table(test::tabEmpty.join(test::tabPerson)));
+static_assert(!sqlpp::is_table(test::tabEmpty.inner_join(test::tabPerson)));
+static_assert(!sqlpp::is_table(test::tabEmpty.left_outer_join(test::tabPerson)));
+static_assert(!sqlpp::is_table(test::tabEmpty.right_outer_join(test::tabPerson)));
+static_assert(!sqlpp::is_table(test::tabEmpty.outer_join(test::tabPerson)));
 
 // raw tables
 static_assert(sqlpp::is_table(test::tabEmpty));

@@ -73,7 +73,7 @@ namespace sqlpp
   {
     constexpr auto known_aggregates = (::sqlpp::type_vector() + ... + provided_aggregates_of_v<Clauses>);
 
-    if constexpr (not recursive_is_aggregate(known_aggregates, type_t<Condition>{}))
+    if constexpr (!recursive_is_aggregate(known_aggregates, type_t<Condition>{}))
     {
       return failed<assert_having_condition_consists_of_aggregates>{};
     }

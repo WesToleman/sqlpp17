@@ -58,7 +58,7 @@ namespace sqlpp
 
     ~transaction_t()
     {
-      if (not _committed)
+      if (!_committed)
       {
         _connection.destroy_transaction();
       }
@@ -66,7 +66,7 @@ namespace sqlpp
 
     void commit()
     {
-      if (not _committed)
+      if (!_committed)
       {
         _committed = true;
         _connection.commit();
@@ -75,7 +75,7 @@ namespace sqlpp
 
     void rollback()
     {
-      if (not _committed)
+      if (!_committed)
       {
         _committed = true;
         _connection.rollback();

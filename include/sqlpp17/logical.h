@@ -59,7 +59,7 @@ namespace sqlpp
   };
 
   template <typename L, typename R>
-  using check_logical_args = std::enable_if_t<has_boolean_value_v<L> and has_boolean_value_v<R>>;
+  using check_logical_args = std::enable_if_t<has_boolean_value_v<L> && has_boolean_value_v<R>>;
 
   template <typename L, typename Operator, typename R>
   struct value_type_of<logical_t<L, Operator, R>>

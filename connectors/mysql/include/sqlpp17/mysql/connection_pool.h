@@ -121,7 +121,7 @@ namespace sqlpp::mysql
       _handles.pop_front();
 
       // destroy dead connections
-      if (handle and mysql_ping(handle.get()) != 0)
+      if (handle && mysql_ping(handle.get()) != 0)
       {
         handle.reset();
       }

@@ -50,7 +50,7 @@ namespace sqlpp
   template <typename Arg0, typename Arg1, typename... Args>
   constexpr auto check_concat_args()
   {
-    if constexpr (not(has_text_value_v<Arg0> and (has_text_value_v<Arg1> and ... and has_text_value_v<Args>)))
+    if constexpr (!(has_text_value_v<Arg0> && (has_text_value_v<Arg1> && ... && has_text_value_v<Args>)))
     {
       return failed<assert_concat_args_are_text>{};
     }

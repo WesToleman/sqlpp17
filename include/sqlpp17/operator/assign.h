@@ -53,11 +53,11 @@ namespace sqlpp
   template <typename L, typename R>
   constexpr auto check_assign_args()
   {
-    if constexpr (not can_be_null_v<L> and std::is_same_v<::std::nullopt_t, R>)
+    if constexpr (!can_be_null_v<L> && std::is_same_v<::std::nullopt_t, R>)
     {
       return failed<assert_assign_null_to_nullable_columns_only>{};
     }
-    else if constexpr (not can_be_null_v<L> and is_optional_v<R>)
+    else if constexpr (!can_be_null_v<L> && is_optional_v<R>)
     {
       return failed<assert_assign_optional_to_nullable_columns_only>{};
     }

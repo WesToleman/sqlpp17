@@ -42,7 +42,7 @@ namespace sqlpp
   template <typename Expression>
   constexpr auto check_min_args()
   {
-    if constexpr (not is_expression_v<Expression>)
+    if constexpr (!is_expression_v<Expression>)
     {
       return failed<assert_min_arg_is_expression>{};
     }

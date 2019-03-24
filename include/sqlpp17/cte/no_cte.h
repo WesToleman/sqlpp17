@@ -47,7 +47,7 @@ namespace sqlpp
     {
       return failed<assert_cte_as_arg_has_result_row>{};
     }
-    else if constexpr (not provided_ctes_of_v<Statement>.empty())
+    else if constexpr (!provided_ctes_of_v<Statement>.empty())
     {
       return failed<assert_cte_as_arg_without_with>{};
     }

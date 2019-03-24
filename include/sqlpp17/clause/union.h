@@ -101,19 +101,19 @@ namespace sqlpp
   template <typename LeftSelect, typename RightSelect>
   constexpr auto check_union_args(const LeftSelect& l, const RightSelect& r)
   {
-    if constexpr (not(is_statement_v<LeftSelect> && is_statement_v<RightSelect>))
+    if constexpr (!(is_statement_v<LeftSelect> && is_statement_v<RightSelect>))
     {
       return failed<assert_union_args_are_statements>{};
     }
-    else if constexpr (not(has_result_row_v<LeftSelect> && has_result_row_v<RightSelect>))
+    else if constexpr (!(has_result_row_v<LeftSelect> && has_result_row_v<RightSelect>))
     {
       return failed<assert_union_args_have_result_rows>{};
     }
-    else if constexpr (not result_rows_are_compatible_v<result_row_of_t<LeftSelect>, result_row_of_t<RightSelect>>)
+    else if constexpr (!result_rows_are_compatible_v<result_row_of_t<LeftSelect>, result_row_of_t<RightSelect>>)
     {
       return failed<assert_union_args_have_compatible_rows>{};
     }
-    else if constexpr (not provided_ctes_of_v<RightSelect>.empty())
+    else if constexpr (!provided_ctes_of_v<RightSelect>.empty())
     {
       return failed<assert_union_rhs_arg_without_with>{};
     }

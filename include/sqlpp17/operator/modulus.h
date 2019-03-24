@@ -40,7 +40,7 @@ namespace sqlpp
   };
 
   template <typename L, typename R>
-  using check_modulus_args = std::enable_if_t<has_integral_value_v<L> and has_integral_value_v<R>>;
+  using check_modulus_args = std::enable_if_t<has_integral_value_v<L> && has_integral_value_v<R>>;
 
   template <typename L, typename R, typename = check_modulus_args<L, R>>
   constexpr auto operator%(L l, R r)

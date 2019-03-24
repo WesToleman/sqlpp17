@@ -42,7 +42,7 @@ namespace sqlpp
   template <typename Expression>
   constexpr auto check_avg_args()
   {
-    if constexpr (not has_numeric_value_v<Expression>)
+    if constexpr (!has_numeric_value_v<Expression>)
     {
       return failed<assert_avg_arg_is_numeric>{};
     }

@@ -102,7 +102,7 @@ namespace sqlpp
   {
     using _statement_t = statement<Clauses...>;
 
-    if constexpr (not detail::have_unique_names(parameters_of_v<_statement_t>))
+    if constexpr (!detail::have_unique_names(parameters_of_v<_statement_t>))
     {
       return failed<assert_statement_parameters_have_unique_names>{};
     }
@@ -111,7 +111,7 @@ namespace sqlpp
       return failed<assert_statement_all_required_tables_are_provided>{};
     }
     else
-      return (succeeded{} and ... and check_clause_preparable<Db>(type_v<clause_base<Clauses, _statement_t>>));
+      return (succeeded{} && ... && check_clause_preparable<Db>(type_v<clause_base<Clauses, _statement_t>>));
   }
 
   SQLPP_WRAPPED_STATIC_ASSERT(assert_execute_without_parameters,

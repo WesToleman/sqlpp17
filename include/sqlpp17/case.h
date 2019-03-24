@@ -73,11 +73,11 @@ namespace sqlpp
   template <typename ExpectedValueType, typename When, typename Then>
   constexpr auto check_when_then_args()
   {
-    if constexpr (not has_boolean_value_v<When>)
+    if constexpr (!has_boolean_value_v<When>)
     {
       return failed<assert_when_first_arg_is_boolean_expression>{};
     }
-    else if constexpr (not std::is_same_v<ExpectedValueType, value_type_of_t<Then>>)
+    else if constexpr (!std::is_same_v<ExpectedValueType, value_type_of_t<Then>>)
     {
       return failed<assert_then_value_types_match>{};
     }
@@ -90,7 +90,7 @@ namespace sqlpp
   template <typename ExpectedValueType, typename Else>
   constexpr auto check_else_arg()
   {
-    if constexpr (not std::is_same_v<ExpectedValueType, value_type_of_t<Else>>)
+    if constexpr (!std::is_same_v<ExpectedValueType, value_type_of_t<Else>>)
     {
       return failed<assert_else_value_type_matches>{};
     }
@@ -173,7 +173,7 @@ namespace sqlpp
   template <typename Then>
   constexpr auto check_then_args()
   {
-    if constexpr (not is_expression_v<Then>)
+    if constexpr (!is_expression_v<Then>)
     {
       return failed<assert_then_arg_is_expression>{};
     }
@@ -197,7 +197,7 @@ namespace sqlpp
   template <typename When>
   constexpr auto check_when_args()
   {
-    if constexpr (not has_boolean_value_v<When>)
+    if constexpr (!has_boolean_value_v<When>)
     {
       return failed<assert_when_first_arg_is_boolean_expression>{};
     }

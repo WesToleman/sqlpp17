@@ -204,7 +204,7 @@ namespace sqlpp::mysql
         connection.debug("Preparing: '" + sql_string + "'");
 
       _handle = detail::unique_prepared_statement_ptr(mysql_stmt_init(connection.get()), {});
-      if (not _handle)
+      if (!_handle)
       {
         throw sqlpp::exception("MySQL: Could not allocate prepared statement\n");
       }

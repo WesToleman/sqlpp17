@@ -75,7 +75,7 @@ int main()
   assert_bad_expression(sqlpp::assert_statement_parameters_have_unique_names{},
                         db.prepare(select(test::tabPerson.id)
                                        .from(test::tabPerson)
-                                       .where(::sqlpp::parameter<int>(foo) < test::tabPerson.id and
+                                       .where(::sqlpp::parameter<int>(foo) < test::tabPerson.id &&
                                               test::tabPerson.id < ::sqlpp::parameter<float>(foo))));
 
   // good: using a parameter in a prepared statement
@@ -84,6 +84,6 @@ int main()
   // good: using two parameters with different names
   assert_good_expression(db.prepare(select(test::tabPerson.id)
                                         .from(test::tabPerson)
-                                        .where(::sqlpp::parameter<int>(foo) < test::tabPerson.id and
+                                        .where(::sqlpp::parameter<int>(foo) < test::tabPerson.id &&
                                                test::tabPerson.id < ::sqlpp::parameter<float>(bar))));
 }

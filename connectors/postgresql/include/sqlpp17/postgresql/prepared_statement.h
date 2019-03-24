@@ -149,7 +149,7 @@ namespace sqlpp::postgresql
       auto result = detail::unique_result_ptr(
           PQprepare(connection.get(), _name.c_str(), sql_string.c_str(), ParameterVector::size(), nullptr), {});
 
-      if (not result)
+      if (!result)
       {
         throw sqlpp::exception("Postgresql: out of memory (query was >>" + sql_string + "<<\n");
       }
@@ -180,7 +180,7 @@ namespace sqlpp::postgresql
                          _parameter_pointers.data(), nullptr, nullptr, 0),
           {});
 
-      if (not result)
+      if (!result)
       {
         throw sqlpp::exception("Postgresql: out of memory (prepared statement " + _name + "\n");
       }

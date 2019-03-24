@@ -46,14 +46,14 @@ namespace sqlpp::sqlite3::detail
   {
     auto ret = to_sql_name(context, columnSpec) + value_type_to_sql_string(context, type_t<typename ColumnSpec::value_type>{});
 
-    if constexpr (not ColumnSpec::can_be_null)
+    if constexpr (!ColumnSpec::can_be_null)
     {
       ret += " NOT NULL";
     }
 
     if constexpr (ColumnSpec::has_auto_increment)
     {
-      static_assert(not ColumnSpec::can_be_null, "auto increment columns must not be null");
+      static_assert(!ColumnSpec::can_be_null, "auto increment columns must not be null");
       static_assert(std::is_integral_v<typename ColumnSpec::value_type>, "auto increment columns must be integer");
       static_assert(std::is_same_v<typename TableSpec::primary_key, ::sqlpp::type_vector<ColumnSpec>>,
                     "auto increment columns must be integer primary key");
@@ -106,7 +106,7 @@ namespace sqlpp::sqlite3::detail
     {
       return "";
     }
-    else if constexpr (_primary_key::size() == 1 and primary_key_has_auto_increment(_primary_key{}))
+    else if constexpr (_primary_key::size() == 1 && primary_key_has_auto_increment(_primary_key{}))
     {
       return "";  // auto incremented primary keys need to be specified inline
     }

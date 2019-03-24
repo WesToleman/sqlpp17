@@ -41,23 +41,23 @@ int main()
   try
   {
     // Logical
-    assert_equality("tab_person.is_manager AND 1", tabPerson.isManager and true);
-    assert_equality("tab_person.is_manager AND 1 AND 0", tabPerson.isManager and true and false);
-    assert_equality("tab_person.is_manager AND 0", tabPerson.isManager and (true and false));
-    assert_equality("1 AND (tab_person.is_manager AND 0)", true and (tabPerson.isManager and false));
+    assert_equality("tab_person.is_manager AND 1", tabPerson.isManager && true);
+    assert_equality("tab_person.is_manager AND 1 AND 0", tabPerson.isManager && true && false);
+    assert_equality("tab_person.is_manager AND 0", tabPerson.isManager && (true && false));
+    assert_equality("1 AND (tab_person.is_manager AND 0)", true && (tabPerson.isManager && false));
 
-    assert_equality("tab_person.is_manager OR 1", tabPerson.isManager or true);
-    assert_equality("tab_person.is_manager OR 1 OR 0", tabPerson.isManager or true or false);
-    assert_equality("tab_person.is_manager OR 1", tabPerson.isManager or (true or false));
-    assert_equality("1 OR (tab_person.is_manager OR 0)", true or (tabPerson.isManager or false));
+    assert_equality("tab_person.is_manager OR 1", tabPerson.isManager || true);
+    assert_equality("tab_person.is_manager OR 1 OR 0", tabPerson.isManager || true || false);
+    assert_equality("tab_person.is_manager OR 1", tabPerson.isManager || (true || false));
+    assert_equality("1 OR (tab_person.is_manager OR 0)", true || (tabPerson.isManager || false));
 
-    assert_equality("(tab_person.is_manager AND 1) OR 1", tabPerson.isManager and true or true);
-    assert_equality("tab_person.is_manager OR 0", tabPerson.isManager or (true and false));
-    assert_equality("1 OR (tab_person.is_manager AND 0)", true or tabPerson.isManager and false);
-    assert_equality("1 AND (tab_person.is_manager OR 0)", true and (tabPerson.isManager or false));
+    assert_equality("(tab_person.is_manager AND 1) OR 1", tabPerson.isManager && true || true);
+    assert_equality("tab_person.is_manager OR 0", tabPerson.isManager || (true && false));
+    assert_equality("1 OR (tab_person.is_manager AND 0)", true || tabPerson.isManager && false);
+    assert_equality("1 AND (tab_person.is_manager OR 0)", true && (tabPerson.isManager || false));
 
-    assert_equality("NOT tab_person.is_manager", not tabPerson.isManager);
-    assert_equality("NOT (NOT tab_person.is_manager)", not not tabPerson.isManager);
+    assert_equality("NOT tab_person.is_manager", !tabPerson.isManager);
+    assert_equality("NOT (NOT tab_person.is_manager)", !!tabPerson.isManager);
 
     // Comparison
     assert_equality("tab_person.name < 'Herb'", tabPerson.name < "Herb");

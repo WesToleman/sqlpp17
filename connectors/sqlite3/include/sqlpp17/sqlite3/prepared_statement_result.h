@@ -49,7 +49,7 @@ namespace sqlpp::sqlite3::detail
 
     auto operator()(::sqlite3_stmt* handle) const noexcept -> void
     {
-      if (_owning and handle)
+      if (_owning && handle)
       {
         sqlite3_finalize(handle);
       }

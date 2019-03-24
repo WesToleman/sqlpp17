@@ -176,7 +176,7 @@ namespace sqlpp::sqlite3
 
       ::sqlpp::sqlite3::bind_parameters(_handle.get(), parameters);
 
-      if constexpr (not std::is_same_v<ResultType, select_result>)
+      if constexpr (!std::is_same_v<ResultType, select_result>)
       {
         switch (const auto rc = sqlite3_step(_handle.get()); rc)
         {
