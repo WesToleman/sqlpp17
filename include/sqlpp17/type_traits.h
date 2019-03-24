@@ -57,14 +57,14 @@ namespace sqlpp
   };
 
   template <typename T>
-  constexpr auto is_read_only_v = false;
+  constexpr bool is_read_only_v = false;
 
   struct auto_increment_t
   {
   };
 
   template <>
-  constexpr auto is_read_only_v<auto_increment_t> = true;
+  constexpr bool is_read_only_v<auto_increment_t> = true;
 
   template <typename T>
   struct type_t
@@ -88,11 +88,11 @@ namespace sqlpp
   template <typename T>
   struct can_be_null
   {
-    static constexpr auto value = false;
+    static constexpr bool value = false;
   };
 
   template <typename T>
-  constexpr auto can_be_null_v = can_be_null<T>::value;
+  constexpr bool can_be_null_v = can_be_null<T>::value;
 
   template <typename T>
   struct provided_aggregates_of
@@ -109,7 +109,7 @@ namespace sqlpp
   };
 
   template <typename T>
-  inline constexpr auto is_insert_required_v = is_insert_required<T>::value;
+  inline constexpr bool is_insert_required_v = is_insert_required<T>::value;
 
   struct is_insert_required_pred_t
   {
@@ -154,10 +154,10 @@ namespace sqlpp
   using clause_result_type_t = typename clause_result_type<T>::type;
 
   template <typename T>
-  constexpr auto is_failed_v = false;
+  constexpr bool is_failed_v = false;
 
   template <typename T>
-  constexpr auto is_failed(const T&)
+  constexpr bool is_failed(const T&)
   {
     return is_failed_v<T>;
   }
@@ -167,37 +167,37 @@ namespace sqlpp
   constexpr auto clause_tag = no_clause_tag;
 
   template <typename T>
-  constexpr auto is_clause_v = (clause_tag<T> != no_clause_tag);
+  constexpr bool is_clause_v = (clause_tag<T> != no_clause_tag);
 
   template <typename T>
-  constexpr auto is_clause(const T&)
+  constexpr bool is_clause(const T&)
   {
     return is_clause_v<T>;
   }
 
   template <typename T>
-  constexpr auto is_alias_v = false;
+  constexpr bool is_alias_v = false;
 
   template <typename T>
-  constexpr auto is_alias(const T&)
+  constexpr bool is_alias(const T&)
   {
     return is_alias_v<T>;
   }
 
   template <typename T>
-  constexpr auto is_assignment_v = false;
+  constexpr bool is_assignment_v = false;
 
   template <typename T>
-  constexpr auto is_assignment(const T&)
+  constexpr bool is_assignment(const T&)
   {
     return is_assignment_v<T>;
   }
 
   template <typename T>
-  constexpr auto is_column_v = false;
+  constexpr bool is_column_v = false;
 
   template <typename T>
-  constexpr auto is_column(const T&)
+  constexpr bool is_column(const T&)
   {
     return is_column_v<T>;
   }
@@ -208,7 +208,7 @@ namespace sqlpp
   };
 
   template <typename T>
-  constexpr auto is_statement_v = is_statement<T>::value;
+  constexpr bool is_statement_v = is_statement<T>::value;
 
   template <typename T>
   struct result_row_of
@@ -220,10 +220,10 @@ namespace sqlpp
   using result_row_of_t = typename result_row_of<T>::type;
 
   template <typename T>
-  constexpr auto has_result_row_v = !std::is_same_v<result_row_of_t<T>, none_t>;
+  constexpr bool has_result_row_v = !std::is_same_v<result_row_of_t<T>, none_t>;
 
   template <typename T>
-  constexpr auto has_result_row(const T&)
+  constexpr bool has_result_row(const T&)
   {
     return has_result_row_v<T>;
   }
@@ -231,65 +231,65 @@ namespace sqlpp
   template <typename Left, typename Right>
   struct result_rows_are_compatible
   {
-    static constexpr auto result_rows_are_compatible_v = false;
+    static constexpr bool result_rows_are_compatible_v = false;
   };
 
   template <typename Left, typename Right>
-  constexpr auto result_rows_are_compatible_v = result_rows_are_compatible<Left, Right>::value;
+  constexpr bool result_rows_are_compatible_v = result_rows_are_compatible<Left, Right>::value;
 
   template <typename T>
-  constexpr auto is_bad_expression_v = false;
+  constexpr bool is_bad_expression_v = false;
 
   template <typename Assert, typename T>
-  constexpr auto is_specific_bad_expression_v = false;
+  constexpr bool is_specific_bad_expression_v = false;
 
   template <typename T>
-  constexpr auto is_bad_expression()
+  constexpr bool is_bad_expression()
   {
     return is_bad_expression_v<T>;
   }
 
   template <typename Assert, typename T>
-  constexpr auto is_specific_bad_expression()
+  constexpr bool is_specific_bad_expression()
   {
     return is_specific_bad_expression_v<Assert, T>;
   }
 
   template <typename T>
-  constexpr auto is_join_v = false;
+  constexpr bool is_join_v = false;
 
   template <typename T>
-  constexpr auto is_join(const T&)
+  constexpr bool is_join(const T&)
   {
     return is_join_v<T>;
   }
 
   template <typename T>
-  constexpr auto is_result_clause_v = false;
+  constexpr bool is_result_clause_v = false;
 
   template <typename T>
-  constexpr auto is_result_clause(const T&)
+  constexpr bool is_result_clause(const T&)
   {
     return is_result_clause_v<T>;
   }
 
   template <typename T>
-  constexpr auto is_sort_order_v = false;
+  constexpr bool is_sort_order_v = false;
 
   template <typename T>
-  constexpr auto is_table_v = false;
+  constexpr bool is_table_v = false;
 
   template <typename T>
-  constexpr auto is_table(const T&)
+  constexpr bool is_table(const T&)
   {
     return is_table_v<T>;
   }
 
   template <typename T>
-  constexpr auto is_conditionless_join_v = false;
+  constexpr bool is_conditionless_join_v = false;
 
   template <typename T>
-  constexpr auto is_conditionless_join(const T&)
+  constexpr bool is_conditionless_join(const T&)
   {
     return is_conditionless_join<T>;
   }
@@ -297,11 +297,11 @@ namespace sqlpp
   template <typename T>
   struct has_default
   {
-    static constexpr auto value = false;
+    static constexpr bool value = false;
   };
 
   template <typename T>
-  inline constexpr auto has_default_v = has_default<T>::value;
+  inline constexpr bool has_default_v = has_default<T>::value;
 
   struct has_default_pred_t
   {
@@ -311,10 +311,10 @@ namespace sqlpp
   inline constexpr auto has_default_pred = has_default_pred_t{};
 
   template <typename T>
-  constexpr auto is_select_flag_v = false;
+  constexpr bool is_select_flag_v = false;
 
   template <typename T>
-  constexpr auto is_select_flag(const T&)
+  constexpr bool is_select_flag(const T&)
   {
     return is_select_flag<T>;
   }
@@ -333,10 +333,10 @@ namespace sqlpp
   };
 
   template <typename T>
-  constexpr auto is_expression_v = !std::is_same_v<value_type_of_t<T>, none_t>;
+  constexpr bool is_expression_v = !std::is_same_v<value_type_of_t<T>, none_t>;
 
   template <typename T>
-  constexpr auto is_expression(const T&)
+  constexpr bool is_expression(const T&)
   {
     return is_expression<T>;
   }
@@ -345,19 +345,19 @@ namespace sqlpp
   using check_for_expression = std::enable_if_t<(false || ... || is_expression_v<Ts>)>;
 
   template <typename T>
-  constexpr auto is_aggregate_v = false;
+  constexpr bool is_aggregate_v = false;
 
   template <typename... KnownAggregates, typename T>
-  constexpr auto recursive_is_aggregate(const sqlpp::type_vector<KnownAggregates...>, const type_t<T>);
+  constexpr bool recursive_is_aggregate(const sqlpp::type_vector<KnownAggregates...>, const type_t<T>);
 
   template <typename... KnownAggregates, typename... Ts>
-  constexpr auto recursive_is_aggregate(const sqlpp::type_vector<KnownAggregates...>, const type_vector<Ts...>)
+  constexpr bool recursive_is_aggregate(const sqlpp::type_vector<KnownAggregates...>, const type_vector<Ts...>)
   {
     return (true and ... and recursive_is_aggregate(sqlpp::type_vector<KnownAggregates...>{}, ::sqlpp::type_t<Ts>{}));
   }
 
   template <typename... KnownAggregates, typename T>
-  constexpr auto recursive_is_aggregate(const sqlpp::type_vector<KnownAggregates...>, const type_t<T>)
+  constexpr bool recursive_is_aggregate(const sqlpp::type_vector<KnownAggregates...>, const type_t<T>)
   {
     if constexpr (!is_expression_v<T>)
     {
@@ -378,16 +378,16 @@ namespace sqlpp
   }
 
   template <typename... KnownAggregates, typename T>
-  constexpr auto recursive_contains_aggregate(const sqlpp::type_vector<KnownAggregates...>, const type_t<T>);
+  constexpr bool recursive_contains_aggregate(const sqlpp::type_vector<KnownAggregates...>, const type_t<T>);
 
   template <typename... KnownAggregates, typename... Ts>
-  constexpr auto recursive_contains_aggregate(const sqlpp::type_vector<KnownAggregates...>, const type_vector<Ts...>)
+  constexpr bool recursive_contains_aggregate(const sqlpp::type_vector<KnownAggregates...>, const type_vector<Ts...>)
   {
     return (false || ... || recursive_contains_aggregate(sqlpp::type_vector<KnownAggregates...>{}, ::sqlpp::type_t<Ts>{}));
   }
 
   template <typename... KnownAggregates, typename T>
-  constexpr auto recursive_contains_aggregate(const sqlpp::type_vector<KnownAggregates...>, const type_t<T>)
+  constexpr bool recursive_contains_aggregate(const sqlpp::type_vector<KnownAggregates...>, const type_t<T>)
   {
     if constexpr (is_aggregate_v<T>)
     {
@@ -431,19 +431,19 @@ namespace sqlpp
   using column_of_t = typename column_of<T>::type;
 
   template <typename T>
-  constexpr auto is_optional_v = false;
+  constexpr bool is_optional_v = false;
 
   template <typename T>
-  constexpr auto is_optional_v<std::optional<T>> = true;
+  constexpr bool is_optional_v<std::optional<T>> = true;
 
   template <typename T>
   struct is_optional
   {
-    static constexpr auto value = is_optional_v<T>;
+    static constexpr bool value = is_optional_v<T>;
   };
 
   template <typename T>
-  constexpr auto is_optional_f(const T&)
+  constexpr bool is_optional_f(const T&)
   {
     return is_optional_v<T>;
   }
@@ -451,7 +451,7 @@ namespace sqlpp
   template <typename T>
   struct is_value_type_optional
   {
-    static constexpr auto value = is_optional_v<value_type_of<T>>;
+    static constexpr bool value = is_optional_v<value_type_of<T>>;
   };
 
   template <typename T>
@@ -502,22 +502,22 @@ namespace sqlpp
   }
 
   template <typename... Ts>
-  constexpr auto any_has_value(const std::tuple<Ts...>& t) -> bool
+  constexpr bool any_has_value(const std::tuple<Ts...>& t)
   {
     return (false || ... || has_value(std::get<Ts>(t)));
   }
   template <typename T>
-  constexpr auto is_boolean_v = std::is_same_v<T, bool>;
+  constexpr bool is_boolean_v = std::is_same_v<T, bool>;
 
   template <>
-  constexpr auto is_boolean_v<std::nullopt_t> = true;
+  constexpr bool is_boolean_v<std::nullopt_t> = true;
 
   template <typename T>
-  constexpr auto has_boolean_value_v =
+  constexpr bool has_boolean_value_v =
       is_boolean_v<remove_optional_t<T>> || is_boolean_v<remove_optional_t<value_type_of_t<T>>>;
 
   template <typename T>
-  constexpr auto is_boolean(const T&)
+  constexpr bool is_boolean(const T&)
   {
     return is_boolean_v<T>;
   }
@@ -529,57 +529,57 @@ namespace sqlpp
   struct text_t;
 
   template <typename T>
-  constexpr auto is_integral_v = std::is_integral_v<T>;
+  constexpr bool is_integral_v = std::is_integral_v<T>;
 
   template <>
-  constexpr auto is_integral_v<char> = false;  // char is text
+  constexpr bool is_integral_v<char> = false;  // char is text
 
   template <>
-  constexpr auto is_integral_v<bool> = false;  // bool is boolean
+  constexpr bool is_integral_v<bool> = false;  // bool is boolean
 
   template <>
-  constexpr auto is_integral_v<std::nullopt_t> = true;
+  constexpr bool is_integral_v<std::nullopt_t> = true;
 
   template <>
-  constexpr auto is_integral_v<integral_t> = true;
+  constexpr bool is_integral_v<integral_t> = true;
 
   template <typename T>
-  constexpr auto has_integral_value_v =
+  constexpr bool has_integral_value_v =
       is_integral_v<remove_optional_t<T>> || is_integral_v<remove_optional_t<value_type_of_t<T>>>;
 
   template <typename T>
-  constexpr auto is_numeric_v = is_integral_v<T> || std::is_floating_point_v<T>;
+  constexpr bool is_numeric_v = is_integral_v<T> || std::is_floating_point_v<T>;
 
   template <>
-  constexpr auto is_numeric_v<numeric_t> = true;
+  constexpr bool is_numeric_v<numeric_t> = true;
 
   template <>
-  constexpr auto is_numeric_v<std::nullopt_t> = true;
+  constexpr bool is_numeric_v<std::nullopt_t> = true;
 
   template <typename T>
-  constexpr auto has_numeric_value_v =
+  constexpr bool has_numeric_value_v =
       is_numeric_v<remove_optional_t<T>> || is_numeric_v<remove_optional_t<value_type_of_t<T>>>;
 
   template <typename T>
-  constexpr auto is_text_v = false;
+  constexpr bool is_text_v = false;
 
   template <>
-  constexpr auto is_text_v<char> = true;
+  constexpr bool is_text_v<char> = true;
 
   template <>
-  constexpr auto is_text_v<const char*> = true;
+  constexpr bool is_text_v<const char*> = true;
 
   template <>
-  constexpr auto is_text_v<std::string> = true;
+  constexpr bool is_text_v<std::string> = true;
 
   template <>
-  constexpr auto is_text_v<std::string_view> = true;
+  constexpr bool is_text_v<std::string_view> = true;
 
   template <>
-  constexpr auto is_text_v<std::nullopt_t> = true;
+  constexpr bool is_text_v<std::nullopt_t> = true;
 
   template <typename T>
-  constexpr auto has_text_value_v = is_text_v<remove_optional_t<T>> || is_text_v<remove_optional_t<value_type_of_t<T>>>;
+  constexpr bool has_text_value_v = is_text_v<remove_optional_t<T>> || is_text_v<remove_optional_t<value_type_of_t<T>>>;
 
   template <typename L, typename R, typename Enable = void>
   struct values_are_compatible : std::false_type
@@ -610,13 +610,13 @@ namespace sqlpp
   };
 
   template <typename L, typename R>
-  inline constexpr auto values_are_compatible_v = values_are_compatible<L, R>::value;
+  inline constexpr bool values_are_compatible_v = values_are_compatible<L, R>::value;
 
   template <typename T>
-  constexpr auto is_conditionless_dynamic_join = false;
+  constexpr bool is_conditionless_dynamic_join = false;
 
   template <typename T>
-  constexpr auto is_dynamic_join = false;
+  constexpr bool is_dynamic_join = false;
 
   template <typename T>
   struct requires_braces : std::false_type
@@ -624,7 +624,7 @@ namespace sqlpp
   };
 
   template <typename T>
-  constexpr auto requires_braces_v = requires_braces<T>::value;
+  constexpr bool requires_braces_v = requires_braces<T>::value;
 
   template <typename T>
   struct parameters_of
@@ -672,7 +672,7 @@ namespace sqlpp
   constexpr auto provided_tables_of_v = provided_tables_of(type_t<T>{});
 
   template <typename... T>
-  [[nodiscard]] constexpr auto required_ctes_of(type_vector<T...>)
+  [[nodiscard]] constexpr bool required_ctes_of(type_vector<T...>)
   {
     return (type_set() | ... | required_ctes_of(type_t<T>{}));
   }
@@ -787,7 +787,7 @@ namespace sqlpp
   };
 
   template <typename T>
-  inline constexpr auto is_selectable_v = is_selectable<T>::value;
+  inline constexpr bool is_selectable_v = is_selectable<T>::value;
 
   template <typename T>
   struct is_cte : std::false_type
@@ -795,7 +795,7 @@ namespace sqlpp
   };
 
   template <typename T>
-  inline constexpr auto is_cte_v = is_cte<T>::value;
+  inline constexpr bool is_cte_v = is_cte<T>::value;
 
   template <typename T>
   struct is_cte_recursive : std::false_type
@@ -803,6 +803,6 @@ namespace sqlpp
   };
 
   template <typename T>
-  inline constexpr auto is_cte_recursive_v = is_cte_recursive<T>::value;
+  inline constexpr bool is_cte_recursive_v = is_cte_recursive<T>::value;
 
 }  // namespace sqlpp
