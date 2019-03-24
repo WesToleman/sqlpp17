@@ -32,7 +32,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 namespace sqlpp::mysql::detail
 {
-#warning: This should go into a separate file
+#pragma message("warning: This should go into a separate file")
 #if LIBMYSQL_VERSION_ID >= 80000
   using my_bool = bool;
 #endif

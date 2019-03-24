@@ -57,7 +57,7 @@ namespace sqlpp::test
         std::cout << row.id << ", " << row.name.value_or("NULL") << std::endl;
       }
     }
-#warning: Add some more tests...
+#pragma message("warning: Add some more tests...")
   }
 }  // namespace sqlpp::test
 

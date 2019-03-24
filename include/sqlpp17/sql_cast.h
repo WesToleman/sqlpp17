@@ -62,7 +62,7 @@ namespace sqlpp
   template <typename ValueType, typename Expression>
   [[nodiscard]] auto sql_cast(Expression expression)
   {
-#warning: Need to check that ValueType is a valueType and Expression is an expression
+#pragma message("warning: Need to check that ValueType is a valueType and Expression is an expression")
     return sql_cast_t<ValueType, Expression>{expression};
   }
 

@@ -33,7 +33,7 @@ namespace
 {
   using test::tabFloat;
 
-#warning: should generalize tests for accepted/rejected float/double values
+#pragma message("warning: should generalize tests for accepted/rejected float/double values")
   template <typename Db>
   auto testSpecialValues(Db& db) -> void
   {

@@ -372,7 +372,7 @@ namespace sqlpp
     }
     else
     {
-#warning: old code validated if nodes_of_t was emtpy. Is this really needed?
+#pragma message("warning: old code validated if nodes_of_t was empty. Is this really needed?")
       return recursive_is_aggregate(sqlpp::type_vector<KnownAggregates...>{}, nodes_of_t<T>{});
     }
   }
@@ -398,7 +398,7 @@ namespace sqlpp
     }
     else
     {
-#warning: old code validated if nodes_of_t was emtpy. Is this really needed?
+#pragma message("warning: old code validated if nodes_of_t was empty. Is this really needed?")
       return recursive_contains_aggregate(sqlpp::type_vector<KnownAggregates...>{}, nodes_of_t<T>{});
     }
   }

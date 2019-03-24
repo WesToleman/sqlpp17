@@ -60,7 +60,7 @@ namespace sqlpp
       {
         return failed<assert_conditionless_join_unique_names>{};
       }
-#warning: This should be checked when turning a select into a table
+#pragma message("warning: This should be checked when turning a select into a table")
       else if constexpr (is_a_required_table_missing(provided_tables_of_v<Lhs>, type_t<Lhs>{}) or is_a_required_table_missing(provided_tables_of_v<Rhs>, type_t<Rhs>{}))
       {
         return failed<assert_conditionless_join_no_table_dependencies>{};

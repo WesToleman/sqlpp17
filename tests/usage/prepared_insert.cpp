@@ -37,7 +37,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 using test::tabDepartment;
 using test::tabPerson;
 
-#warning: Write a few tests for column properties like is_insert_required.
+#pragma message("warning: Write a few tests for column properties like is_insert_required.")
 
 SQLPP_CREATE_NAME_TAG(pName);
 SQLPP_CREATE_NAME_TAG(pIsManager);

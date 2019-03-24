@@ -43,7 +43,7 @@ namespace sqlpp::postgresql
   template <typename Table>
   [[nodiscard]] constexpr auto remove_from(Table&& t)
   {
-#warning : see https://www.postgresql.org/docs/9.1/static/sql-update.html
+#pragma message("warning: see https://www.postgresql.org/docs/9.1/static/sql-update.html")
     /*
      * ONLY keyword
      * from may contain a join that must not contain the table from remove_from (it may contain an alias, though)

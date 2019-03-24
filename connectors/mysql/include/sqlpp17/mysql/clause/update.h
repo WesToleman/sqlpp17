@@ -45,7 +45,7 @@ namespace sqlpp::mysql
   template <typename Table>
   [[nodiscard]] constexpr auto update(Table&&... table)
   {
-#warning : see https://dev.mysql.com/doc/refman/5.7/en/update.html
+#pragma message("warning: see https://dev.mysql.com/doc/refman/5.7/en/update.html")
     /* single table or join
      */
     return update().table(std::forward<Table>(table));

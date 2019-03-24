@@ -88,7 +88,7 @@ namespace sqlpp
     {
       return failed<assert_insert_into_arg_no_read_only_table>{};
     }
-#warning: If something is a table, it must not have unsatisfied dependencies on other tables. It should be unnecessary to test that here.
+#pragma message("warning: If something is a table, it must not have unsatisfied dependencies on other tables. It should be unnecessary to test that here.")
     else
     {
       return succeeded{};

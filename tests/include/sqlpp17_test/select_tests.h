@@ -80,7 +80,7 @@ namespace sqlpp::test
       std::cout << row.maxName << std::endl;
       std::cout << row.avgId << std::endl;
     }
-#warning: Add some more tests...
+#pragma message("warning: Add some more tests...")
   }
 }  // namespace sqlpp::test
 

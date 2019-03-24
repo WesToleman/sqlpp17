@@ -35,7 +35,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <sqlpp17/name_tag.h>
 #include <sqlpp17/operator.h>
 
-#warning : Need a real result class and a real connection
+#pragma message("warning: Need a real result class and a real connection")
 
 SQLPP_CREATE_NAME_TAG(foo);
 
@@ -50,7 +50,7 @@ struct connection
 int main()
 {
   auto context = 0;
-#warning : s should be a constexpr
+#pragma message("warning: s should be a constexpr")
   auto s =
       sqlpp::with(cte(foo).as(select(all_of(test::tabPerson)).from(test::tabPerson).where(test::tabPerson.id % 2 == 0)))
       << sqlpp::select()
@@ -58,7 +58,7 @@ int main()
                                test::tabPerson.name)
       << sqlpp::from(test::tabPerson) << sqlpp::where(test::tabPerson.isManager and test::tabPerson.name == "")
       << sqlpp::having(test::tabPerson.id == test::tabPerson.id or test::tabPerson.id == 1);
-#warning : need to test results
+#pragma message("warning: need to test results")
   std::cout << to_sql_string_c(context, s);
   /*
   auto conn = connection{};

@@ -47,8 +47,8 @@ namespace sqlpp::mysql
   template <typename... Tables>
   [[nodiscard]] constexpr auto remove_from(Tables&&... tables)
   {
-#warning : remove_from takes one or more tables, remove_using takes a join that needs to include all tables from remove_from (unless there is only one table in remove_from
-#warning : see https://dev.mysql.com/doc/refman/5.7/en/delete.html
+#pragma message("warning: remove_from takes one or more tables, remove_using takes a join that needs to include all tables from remove_from (unless there is only one table in remove_from")
+#pragma message("warning: see https://dev.mysql.com/doc/refman/5.7/en/delete.html")
     /* single table, no using: order_by and limit are allowed
      * single table: using not required
      * single or more tables: using can be used with a join of two or more tables, all tables from remove_from are

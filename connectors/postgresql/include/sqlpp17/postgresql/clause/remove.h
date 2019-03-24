@@ -44,7 +44,7 @@ namespace sqlpp::postgresql
   template <typename Table>
   [[nodiscard]] constexpr auto remove_from(Table&&... table)
   {
-#warning : see https://www.postgresql.org/docs/9.1/static/sql-delete.html
+#pragma message("warning: see https://www.postgresql.org/docs/9.1/static/sql-delete.html")
     /*
      * ONLY keyword
      * using not required

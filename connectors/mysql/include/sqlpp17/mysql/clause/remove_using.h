@@ -71,7 +71,7 @@ namespace sqlpp::mysql
     return context << " INTO " << t._table;
   }
 
-#warning allow joins here, too
+#pragma message("warning: allow joins here, too")
   SQLPP_WRAPPED_STATIC_ASSERT(assert_using_arg_is_table, "using_() arg has to be a table");
   SQLPP_WRAPPED_STATIC_ASSERT(assert_using_arg_no_read_only_table, "using_() arg must not be read-only table");
   SQLPP_WRAPPED_STATIC_ASSERT(assert_using_arg_no_required_tables, "using_() arg must not depend on other tables");

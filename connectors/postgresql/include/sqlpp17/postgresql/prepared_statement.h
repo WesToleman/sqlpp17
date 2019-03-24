@@ -132,8 +132,7 @@ namespace sqlpp::postgresql
     std::array<std::string, ParameterVector::size()> _parameter_strings;
     std::array<char*, ParameterVector::size()> _parameter_pointers;
 
-  public:
-    ::sqlpp::prepared_statement_parameters<ParameterVector> parameters = {};
+  public::sqlpp::prepared_statement_parameters<ParameterVector> parameters = {};
 
     prepared_statement_t() = default;
     template <typename Connection, typename Statement>

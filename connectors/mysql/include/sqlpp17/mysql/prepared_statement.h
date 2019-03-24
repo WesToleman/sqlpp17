@@ -186,7 +186,7 @@ namespace sqlpp::mysql
   class prepared_statement_t
   {
     detail::unique_prepared_statement_ptr _handle;
-#warning: This should be a tuple of correct types
+#pragma message("warning: This should be a tuple of correct types")
     std::array<bind_meta_data_t, ParameterVector::size()> _parameter_bind_meta_data = {};
     std::array<MYSQL_BIND, ParameterVector::size()> _parameter_bind_data = {};
 

@@ -33,7 +33,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 int main()
 {
-#warning : s should be a constexpr
+#pragma message("warning: s should be a constexpr")
   auto context = 0;
   {
     auto s = test::tabPerson.join(test::tabDepartment).unconditionally();
@@ -43,5 +43,5 @@ int main()
     auto s = test::tabPerson.join(false ? std::make_optional(test::tabDepartment) : std::nullopt).unconditionally();
     std::cout << to_sql_string_c(context, s) << std::endl;
   }
-#warning : need to test results
+#pragma message("warning: need to test results")
 }

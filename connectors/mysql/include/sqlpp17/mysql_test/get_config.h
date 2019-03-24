@@ -41,7 +41,7 @@ namespace sqlpp::mysql::test
   {
     auto config = ::sqlpp::mysql::connection_config_t{};
     config.user = "root";
-#warning : This needs to be configurable
+#pragma message("warning: This needs to be configurable")
     config.password = "";
     config.database = "sqlpp17_test";
     config.debug = print_debug;

@@ -133,8 +133,7 @@ namespace sqlpp::sqlite3
     detail::result_owns_statement _ownership;
     ::sqlite3* _connection;
 
-  public:
-    ::sqlpp::prepared_statement_parameters<ParameterVector> parameters = {};
+  public::sqlpp::prepared_statement_parameters<ParameterVector> parameters = {};
 
     prepared_statement_t() = default;
 

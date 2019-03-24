@@ -88,7 +88,7 @@ int main()
     std::cout << row.avgId << std::endl;
   }
 
-#warning : Need more examples
+#pragma message("warning: Need more examples")
 
   // using << concatenation
   for (const auto& row :

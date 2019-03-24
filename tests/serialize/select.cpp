@@ -35,7 +35,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 int main()
 {
   auto context = 0;
-#warning : s should be a constexpr
+#pragma message("warning: s should be a constexpr")
   {
     auto s = sqlpp::select() << sqlpp::select_columns(test::tabPerson.id, test::tabPerson.isManager,
                                                       test::tabPerson.address, test::tabPerson.name)

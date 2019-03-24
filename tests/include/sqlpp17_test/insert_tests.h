@@ -43,7 +43,7 @@ namespace sqlpp::test
 
     [[maybe_unused]] auto id = db(insert_into(::test::tabDepartment).default_values());
 
-#warning: Add some more tests...
+#pragma message("warning: Add some more tests...")
   }
 }  // namespace sqlpp::test
 

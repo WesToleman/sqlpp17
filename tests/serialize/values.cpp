@@ -51,5 +51,5 @@ int main()
   std::cout << sqlpp::to_sql_string_c(context, std::string_view("string_view")) << std::endl;
   std::cout << sqlpp::to_sql_string_c(context, std::string("string")) << std::endl;
 
-#warning : need to test results
+#pragma message("warning: need to test results")
 }

@@ -72,7 +72,7 @@ int main()
 
     sqlpp::test::testDirectExecution(db);
     sqlpp::test::testPreparedExecution(db);
-#warning: NAN seems to be a moving target. Inserting failed half a year ago, but after a system update, it succeeds.
+#pragma message("warning: NAN seems to be a moving target. Inserting failed half a year ago, but after a system update, it succeeds.")
     //testInvalidValues(db);
   }
   catch (const std::exception& e)

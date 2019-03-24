@@ -77,7 +77,7 @@ namespace sqlpp::test
 
       [[maybe_unused]] const auto id = execute(s);
     }
-#warning: Add some more tests...
+#pragma message("warning: Add some more tests...")
   }
 }  // namespace sqlpp::test
 

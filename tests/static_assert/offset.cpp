@@ -35,7 +35,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 using ::sqlpp::test::assert_bad_expression;
 using ::sqlpp::test::assert_good_expression;
 
-#warning : Not implemented yet
+#pragma message("warning: Not implemented yet")
 
 int main()
 {

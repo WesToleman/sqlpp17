@@ -33,7 +33,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <sqlpp17/clause/union.h>
 #include <sqlpp17/operator.h>
 
-#warning : Not implemented
+#pragma message("warning: Not implemented")
 
 struct connection
 {
@@ -47,7 +47,7 @@ int main()
 {
   auto context = 0;
   /*
-  #warning : s should be a constexpr
+  #pragma message("warning: s should be a constexpr")
     auto s = sqlpp::union_all(sqlpp::select() << select_columns(test::tabPerson.id),
                               sqlpp::select() << select_columns(test::tabPerson.id));
   sqlpp::select() << sqlpp::selected_fields(test::tabPerson.id, test::tabPerson.isManager,
@@ -55,7 +55,7 @@ int main()
                            << sqlpp::from(test::tabPerson)
                            << sqlpp::where(test::tabPerson.isManager and test::tabPerson.name == '\0')
                            << sqlpp::having(test::tabPerson.id == test::tabPerson.id or test::tabPerson.id == 1);
-  #warning : need to test results
+  #pragma message("warning: need to test results")
     std::cout << to_sql_string_c(context, s);
     auto conn = connection{};
     auto row = s.execute(conn);
